@@ -1,9 +1,13 @@
 package LojadeGamesBackEnd.LojadeGames.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -29,8 +33,9 @@ public class Produto {
 	@NotNull
 	private int preco;
 
-	@NotNull
-	private long categoria;
+	@ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+	@JoinColumn(name = "fk_categoria")
+	private Categoria categoria;
 
 	public long getId() {
 		return id;
@@ -64,11 +69,11 @@ public class Produto {
 		this.descricao = descricao;
 	}
 
-	public long getCategoria() {
+	public Categoria getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(long categoria) {
+	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 
