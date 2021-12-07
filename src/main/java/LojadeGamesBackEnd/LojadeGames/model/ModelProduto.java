@@ -24,6 +24,9 @@ private long id;
 @Size(min = 4, max = 30)
 private String nomedojogo;
 
+@NotBlank
+@Size(min = 10, max = 60)
+private String descricao;
 
 @NotBlank
 private double preco;
