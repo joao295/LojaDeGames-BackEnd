@@ -9,74 +9,58 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table (name = "produto")
-
+@Table(name = "produto")
 
 public class ModelProduto {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private long id;
+	@NotBlank
+	@Size(max = 30)
+	private String nomeDoJogo;
 
+	@NotBlank
+	@Size(min = 10, max = 60)
+	private String descricao;
 
-@NotBlank
-@Size(min = 4, max = 30)
-private String nomedojogo;
+	@NotBlank
+	private int preco;
 
-@NotBlank
-@Size(min = 10, max = 60)
-private String descricao;
+	@NotBlank
+	private long categoria;
 
-@NotBlank
-private double preco;
+	public long getId() {
+		return id;
+	}
 
+	public void setId(long id) {
+		this.id = id;
+	}
 
-@NotBlank
-private long categoria;
+	public String getNomeDoJogo() {
+		return nomeDoJogo;
+	}
 
+	public void setNomeDoJogo(String nomedojogo) {
+		this.nomeDoJogo = nomedojogo;
+	}
 
-public long getId() {
-	return id;
-}
+	public int getPreco() {
+		return preco;
+	}
 
+	public void setPreco(int preco) {
+		this.preco = preco;
+	}
 
-public void setId(long id) {
-	this.id = id;
-}
+	public long getCategoria() {
+		return categoria;
+	}
 
-
-public String getNomedojogo() {
-	return nomedojogo;
-}
-
-
-public void setNomedojogo(String nomedojogo) {
-	this.nomedojogo = nomedojogo;
-}
-
-
-public double getPreco() {
-	return preco;
-}
-
-
-public void setPreco(double preco) {
-	this.preco = preco;
-}
-
-
-public long getCategoria() {
-	return categoria;
-}
-
-
-public void setCategoria(long categoria) {
-	this.categoria = categoria;
-}
-
-
-
-
+	public void setCategoria(long categoria) {
+		this.categoria = categoria;
+	}
 
 }

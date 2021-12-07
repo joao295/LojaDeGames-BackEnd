@@ -31,8 +31,8 @@ public class CategoriaController {
 	}
 
 	@GetMapping("/id/{id}")
-	public Categoria findByIdCategoria(@PathVariable long id) {
-		return repository.getById(id);
+	public Categoria findById(@PathVariable long id) {
+		return repository.findById(id);
 	}
 
 	@GetMapping("/descricao/{descricao}")
