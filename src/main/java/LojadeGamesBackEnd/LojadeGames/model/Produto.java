@@ -56,6 +56,14 @@ public class Produto {
 		this.preco = preco;
 	}
 
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
 	public long getCategoria() {
 		return categoria;
 	}
