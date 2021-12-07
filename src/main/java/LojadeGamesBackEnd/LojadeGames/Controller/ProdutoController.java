@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import LojadeGamesBackEnd.LojadeGames.model.ModelProduto;
+import LojadeGamesBackEnd.LojadeGames.model.Produto;
 import LojadeGamesBackEnd.LojadeGames.repository.ProdutoRepository;
 
 @RestController
@@ -26,27 +26,27 @@ public class ProdutoController {
 	private ProdutoRepository repository;
 
 	@GetMapping("/all")
-	public List<ModelProduto> getAll() {
+	public List<Produto> getAll() {
 		return repository.findAll();
 	}
 
 	@GetMapping("/id/{id}")
-	public ModelProduto findById(@PathVariable long id) {
+	public Produto findById(@PathVariable long id) {
 		return repository.getById(id);
 	}
 
 	@GetMapping("/descricao/{descricao}")
-	public List<ModelProduto> findByDescricaoContainingIgnoreCase(@PathVariable String descricao) {
+	public List<Produto> findByDescricaoContainingIgnoreCase(@PathVariable String descricao) {
 		return repository.findByDescricaoContainingIgnoreCase(descricao);
 	}
 
 	@PostMapping("/save")
-	public ModelProduto post(@RequestBody ModelProduto produto) {
+	public Produto post(@RequestBody Produto produto) {
 		return repository.save(produto);
 	}
 
 	@PutMapping("/update")
-	public ModelProduto put(@RequestBody ModelProduto produto) {
+	public Produto put(@RequestBody Produto produto) {
 		return repository.save(produto);
 	}
 
