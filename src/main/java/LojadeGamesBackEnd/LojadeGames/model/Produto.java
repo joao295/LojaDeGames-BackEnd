@@ -34,7 +34,7 @@ public class Produto {
 	private int preco;
 
 	@ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-	@JoinColumn(name = "fk_categoria")
+	@JoinColumn(name = "produtos")
 	private Categoria categoria;
 
 	public long getId() {
