@@ -6,12 +6,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "produto")
 
-public class ModelProduto {
+public class Produto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,10 +26,10 @@ public class ModelProduto {
 	@Size(min = 10, max = 60)
 	private String descricao;
 
-	@NotBlank
+	@NotNull
 	private int preco;
 
-	@NotBlank
+	@NotNull
 	private long categoria;
 
 	public long getId() {
