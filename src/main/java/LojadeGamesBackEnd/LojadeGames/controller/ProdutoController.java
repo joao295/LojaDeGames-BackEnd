@@ -1,4 +1,4 @@
-package LojadeGamesBackEnd.LojadeGames.Controller;
+package LojadeGamesBackEnd.LojadeGames.controller;
 
 import java.util.List;
 
@@ -13,46 +13,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import LojadeGamesBackEnd.LojadeGames.model.Categoria;
-import LojadeGamesBackEnd.LojadeGames.repository.CategoriaRepository;
+import LojadeGamesBackEnd.LojadeGames.model.Produto;
+import LojadeGamesBackEnd.LojadeGames.repository.ProdutoRepository;
 
 @RestController
-@RequestMapping("/categoria")
+@RequestMapping("/produto")
 @CrossOrigin("*")
 
-public class CategoriaController {
+public class ProdutoController {
 
 	@Autowired
-	private CategoriaRepository repository;
+	private ProdutoRepository repository;
 
 	@GetMapping("/all")
-	public List<Categoria> getAll() {
+	public List<Produto> getAll() {
 		return repository.findAll();
 	}
 
 	@GetMapping("/id/{id}")
-	public Categoria findById(@PathVariable long id) {
-		return repository.findById(id);
+	public Produto findById(@PathVariable long id) {
+		return repository.getById(id);
 	}
 
 	@GetMapping("/descricao/{descricao}")
-	public List<Categoria> findByDescricaoContainingIgnoreCase(@PathVariable String descricao) {
+	public List<Produto> findByDescricaoContainingIgnoreCase(@PathVariable String descricao) {
 		return repository.findByDescricaoContainingIgnoreCase(descricao);
 	}
 
 	@PostMapping("/save")
-	public Categoria post(@RequestBody Categoria categoria) {
-		return repository.save(categoria);
+	public Produto post(@RequestBody Produto produto) {
+		return repository.save(produto);
 	}
 
 	@PutMapping("/update")
-	public Categoria put(@RequestBody Categoria categoria) {
-		return repository.save(categoria);
+	public Produto put(@RequestBody Produto produto) {
+		return repository.save(produto);
 	}
 
 	@DeleteMapping("/delete/{id}")
 	public void delete(@PathVariable long id) {
 		repository.deleteById(id);
 	}
-
 }

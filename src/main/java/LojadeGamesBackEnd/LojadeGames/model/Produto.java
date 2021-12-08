@@ -13,6 +13,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "produto")
 
@@ -34,7 +36,7 @@ public class Produto {
 	private int preco;
 
 	@ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-	@JoinColumn(name = "fk_categoria")
+	@JsonIgnoreProperties("produtos")
 	private Categoria categoria;
 
 	public long getId() {
