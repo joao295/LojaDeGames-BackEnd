@@ -12,18 +12,20 @@ import LojadeGamesBackEnd.LojadeGames.model.Usuario;
 import LojadeGamesBackEnd.LojadeGames.repository.UsuarioRepository;
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class UserDetailsServiceImplements implements UserDetailsService {
 
-	@Autowired
-	private UsuarioRepository userRepository;
-	
+	private @Autowired UsuarioRepository repository;
+
 	@Override
-	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-		Optional<Usuario> user = userRepository.findByUsuario(userName);
-		
-		user.orElseThrow(() -> new UsernameNotFoundException(userName + " not found!"));
-		
-		return user.map(UserDetailsImpl::new).get();
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+		Optional<Usuario> optional = repository.findByUsuario(username);
+
+		if (optional.isPresent()) {
+			return new UserDetailsImplements(optional.get());
+		} else {
+			throw new UsernameNotFoundException("Usuario não existe");
+		}
 	}
-	
+
 }
