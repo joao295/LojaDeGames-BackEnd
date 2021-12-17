@@ -9,7 +9,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import LojadeGamesBackEnd.LojadeGames.model.Usuario;
 
 public class UserDetailsImplements implements UserDetails {
+	
 	private static final long serialVersionUID = 1L;
+	
 	private String userName;
 	private String password;
 	private List<GrantedAuthority> authorities;

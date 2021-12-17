@@ -26,15 +26,15 @@ public class BasicSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(service);
 	
 		auth.inMemoryAuthentication().withUser("root")
-				.password(passwordEncoder().encode("458italia"))
+				.password(passwordEncoder().encode("root"))
 				.authorities("ROLE_ADMIN");
 	}
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				.antMatchers(HttpMethod.POST, "/usuarios").permitAll()
-				.antMatchers(HttpMethod.PUT, "usuarios/credentials").permitAll()
+				.antMatchers(HttpMethod.POST, "/usuario/cadastrar").permitAll()
+				.antMatchers(HttpMethod.PUT, "/usuario/credentials").permitAll()
 				.anyRequest().authenticated()
 				.and().httpBasic()
 				.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
