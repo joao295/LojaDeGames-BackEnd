@@ -23,7 +23,7 @@ import LojadeGamesBackEnd.LojadeGames.repository.UsuarioRepository;
 import LojadeGamesBackEnd.LojadeGames.service.UsuarioService;
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/usuarios")
 @CrossOrigin(allowedHeaders = "*", origins = "*")
 public class UsuarioController {
 	private @Autowired UsuarioRepository repository;
